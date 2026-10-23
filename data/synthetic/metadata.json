@@ -1,0 +1,30 @@
+{
+  "data_type": "simulation",
+  "raw_field_data": false,
+  "controller": "physics",
+  "process_seed": 1729,
+  "samples": 512,
+  "cadence_s": 10,
+  "description": "Closed-loop model outputs; not an exogenous heat replay or a measured record",
+  "columns": {
+    "time_s": "s",
+    "pressure_MPa": "MPa",
+    "condenser_pressure_MPa": "MPa",
+    "source_heat_kW": "kW",
+    "water_exchange_kW": "kW",
+    "cooling_water_inlet_K": "K",
+    "cooling_water_outlet_K": "K",
+    "command_power_kg_s": "kg/s",
+    "command_cooling_kg_s": "kg/s",
+    "actual_power_kg_s": "kg/s",
+    "actual_cooling_kg_s": "kg/s",
+    "output_power_kW": "kW",
+    "output_cooling_kW": "kW"
+  },
+  "metrics": {
+    "energy_ratio": 3.1406236295432856e-07,
+    "mass_residual_kg": 3.092281986027956e-11,
+    "combined_RMSE": 0.8683595887874416
+  },
+  "source_trace": "reference_trace.csv"
+}

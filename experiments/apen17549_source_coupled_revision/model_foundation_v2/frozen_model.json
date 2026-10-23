@@ -1,0 +1,20 @@
+{
+  "candidate": "water_balanced_C300000",
+  "configuration": {
+    "calibration_parameters": {
+      "preconditioning_days": 1.0,
+      "sink_conductance_kW_K": 60.0,
+      "fill_volume_fraction": 0.2,
+      "return_tau_s": 30.0,
+      "sink_capacity_kJ_K": 300000.0
+    },
+    "water_boundary": true,
+    "balanced_initialization": true
+  },
+  "water_exchanger": {
+    "capacity_rate_kW_K": 270.0170212765956,
+    "UA_kW_K": 202.8182182432651
+  },
+  "selection": "inner_selection only",
+  "field_dynamic_validated": false
+}

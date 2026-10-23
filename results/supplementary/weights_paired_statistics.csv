@@ -1,0 +1,9 @@
+scenario,predictor,pressure_offset,ratio,profile,first,second,process_replicates,pooled_RMSE_difference,CI_low,CI_high,p_value,paired_effect_size,inference_scope,holm_p
+reference,measured,0.0,0.5,medium_unseen,rrl,sac,5,-0.012858078245760365,-0.013412585390636299,-0.012287362165582454,0.0625,-17.17045161265725,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,0.5,mixed_step_ramp,rrl,sac,5,-0.014594208881605016,-0.014890719928876847,-0.014292606787174172,0.0625,-37.95886222587718,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,0.5,standard,rrl,sac,5,-0.012097476558911281,-0.012416599700646798,-0.011741907920227654,0.0625,-27.325532831759382,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,0.5,very_fast_unseen,rrl,sac,5,-0.018031802031689304,-0.018401476436755423,-0.017655498590767316,0.0625,-35.61713205610036,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,2.0,medium_unseen,rrl,sac,5,-0.0005836359649911346,-0.001307798823327988,0.00025214323621957496,0.3125,-0.6110875667910249,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,2.0,mixed_step_ramp,rrl,sac,5,-0.0029254838913525746,-0.0035090143342595206,-0.0022383911446492433,0.0625,-3.501862546044125,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,2.0,standard,rrl,sac,5,0.0014973549320342686,0.0010487347507466133,0.0018972159772763994,0.0625,2.7370598834109043,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5
+reference,measured,0.0,2.0,very_fast_unseen,rrl,sac,5,-0.0039197352701055704,-0.0053395320040289795,-0.0025792897168882695,0.0625,-2.18489034864031,Fixed policies; process uncertainty only; small-cluster CI exploratory,0.5

@@ -1,0 +1,19 @@
+{
+  "variant": "no_time",
+  "history_samples": 7,
+  "cadence_s": 60,
+  "seeds": [
+    20260920,
+    20260921,
+    20260922,
+    20260923,
+    20260924
+  ],
+  "hidden_widths": [
+    64,
+    64,
+    32
+  ],
+  "raw_labels_included": false,
+  "pressure_unit": "MPa_absolute"
+}

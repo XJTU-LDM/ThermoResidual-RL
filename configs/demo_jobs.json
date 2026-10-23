@@ -1,0 +1,1204 @@
+[
+  {
+    "mode": "rrl",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true,
+      "out": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl",
+      "resume_learner_checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl/initial_learner.pth",
+      "resume_learner_sha256": "96b3c652f435b223809a27f179eef5cdcf37441674598ec0368598c8bde9af11"
+    },
+    "checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl/training/rrl_20260930/selected.pth",
+    "checkpoint_sha256": "404d659168acf325d9c6456d4a249a4bae8340e6539ff8b3dc857c8aa65d6240",
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  },
+  {
+    "mode": "sac",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true,
+      "out": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac",
+      "resume_learner_checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac/initial_learner.pth",
+      "resume_learner_sha256": "21bfdecd988db5a7b024214ae36cb5d8bcaad4a3d628c84a2931719617203331"
+    },
+    "checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac/training/sac_20260930/selected.pth",
+    "checkpoint_sha256": "aebd65a2a251d5a163cc6747dc955f62686a6a1066fc7df38f0f4cf3d5f83c24",
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  },
+  {
+    "mode": "pi",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true
+    },
+    "overrides": {
+      "pi_kp": 0.006,
+      "pi_ki": 0.00192,
+      "antiwindup_tau_s": 30.0
+    },
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  },
+  {
+    "mode": "mpc",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true
+    },
+    "overrides": {
+      "mpc_horizon": 18,
+      "mpc_rate_penalty": 0.002
+    },
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  },
+  {
+    "mode": "physics",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true
+    },
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  },
+  {
+    "mode": "gspid",
+    "plan": {
+      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
+      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "target_protocol": {
+        "low_amplitude": [
+          [
+            13.0,
+            15.0
+          ],
+          [
+            14.0,
+            18.0
+          ]
+        ],
+        "high_amplitude": [
+          [
+            12.0,
+            16.0
+          ],
+          [
+            12.0,
+            20.0
+          ]
+        ]
+      },
+      "joint_allocation_points": [
+        [
+          0.0,
+          0.0,
+          1.3193092727338487e-67,
+          0.0
+        ],
+        [
+          0.0,
+          1.088,
+          1.2721293061731398e-67,
+          89.59183731640223
+        ],
+        [
+          0.0,
+          0.8160000000000001,
+          1.2721293061731398e-67,
+          67.74493419610926
+        ],
+        [
+          0.0,
+          0.544,
+          1.2721293061731398e-67,
+          45.47548852138774
+        ],
+        [
+          0.0,
+          0.272,
+          1.2796487719126916e-67,
+          22.860841674480007
+        ],
+        [
+          0.272,
+          0.544,
+          5.240665610118299,
+          45.2009261914803
+        ],
+        [
+          0.544,
+          0.272,
+          14.369047494871769,
+          22.62189006655733
+        ],
+        [
+          0.8160000000000001,
+          0.0,
+          25.191643283813423,
+          0.0
+        ],
+        [
+          0.272,
+          0.8160000000000001,
+          3.4165346302359905,
+          67.24589098049655
+        ],
+        [
+          0.544,
+          0.544,
+          9.373948138391343,
+          44.86867360064534
+        ],
+        [
+          0.272,
+          0.0,
+          8.398043861593484,
+          0.0
+        ],
+        [
+          0.272,
+          0.272,
+          6.893106256624684,
+          22.75766929901
+        ],
+        [
+          0.544,
+          0.0,
+          18.89265584459832,
+          0.0
+        ],
+        [
+          0.8160000000000001,
+          0.272,
+          16.451435571804303,
+          22.454088482077417
+        ]
+      ],
+      "information": "191D shared causal history, own closed-loop heat, measured pressure, one-step target preview",
+      "controller_overrides": {
+        "residual_power": null,
+        "residual_cooling": null
+      },
+      "learning": {
+        "hidden": 256,
+        "learning_rate": 0.0001,
+        "gamma": 0.5,
+        "tau": 0.005,
+        "batch_size": 512,
+        "buffer_size": 100000,
+        "initial_alpha": 0.2,
+        "depth": 2,
+        "activation": "leaky_relu",
+        "layer_norm": true,
+        "actor_learning_rate": 3e-06,
+        "critic_learning_rate": 3e-05,
+        "alpha_learning_rate": 0.0003,
+        "feedback_skip": true,
+        "max_grad_norm": 1.0,
+        "action_coordinates": "raw",
+        "target_entropy": -4.0,
+        "actor_feedback_input": false,
+        "critic_feedback_input": false,
+        "critic_quadratic_skip": false,
+        "fixed_alpha": 1e-05
+      },
+      "development_windows": [
+        {
+          "steps": 1200,
+          "offset": 200,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 800,
+          "process_seed": 8102
+        },
+        {
+          "steps": 1200,
+          "offset": 1400,
+          "process_seed": 8102
+        }
+      ],
+      "selection_process_seed": 8101,
+      "selection_steps": 640,
+      "selection_offset": 400,
+      "warmup": 200,
+      "interactions": 768000,
+      "vector_envs": 16,
+      "episode_steps": 1024,
+      "checkpoint_every": 32768,
+      "learning_starts": 512,
+      "updates_per_step": 4,
+      "training_process_seed_base": 90000,
+      "training_episode_offset": 0,
+      "development_workers": 4,
+      "archive_checkpoints": true,
+      "save_learner_state": true,
+      "evaluation_steps": 3200,
+      "evaluation_offset": 0,
+      "residual_regularizer": false,
+      "training_target_profile": "standard",
+      "model_assisted_updates": 0,
+      "scope": "Single-seed full-action parity fixed-budget comparison",
+      "tracking_weights": [
+        1.0,
+        1.0
+      ],
+      "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
+      "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
+      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
+      "total_interactions": 768000,
+      "require_full_action_parity": true
+    },
+    "overrides": {
+      "gspid_kp": 0.6,
+      "gspid_ti_s": 60.0,
+      "gspid_td_s": 0.0,
+      "antiwindup_tau_s": 30.0,
+      "gspid_gain_floor": 10.0
+    },
+    "steps": 256,
+    "process_seed": 2026092301,
+    "profile": "standard",
+    "condition": 0,
+    "evaluation_out": "outputs"
+  }
+]

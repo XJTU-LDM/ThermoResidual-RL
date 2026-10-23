@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying ThermoResidual-RL manuscript when using this software."
+type: software
+title: ThermoResidual-RL
+version: 1.0.0
+date-released: 2026-10-23
+license: MIT
+authors:
+  - family-names: Liu
+    given-names: Demin
+  - family-names: Gao
+    given-names: Tieyu
+  - family-names: Zhou
+    given-names: Liang
+  - family-names: Liu
+    given-names: Zeping
+  - family-names: Liu
+    given-names: Leyang
+  - family-names: Wang
+    given-names: Xuan
+  - family-names: Cao
+    given-names: Hui
+abstract: "A conservative stochastic geothermal source-load simulator and matched residual/full-action reinforcement learning, feedback and predictive control implementations."
+keywords:
+  - geothermal energy
+  - residual reinforcement learning
+  - thermodynamic allocation
+  - power and cooling
