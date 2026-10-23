@@ -1,0 +1,10 @@
+{
+  "accepted_integration": {
+    "substep": 1.25,
+    "radial_cells": 96,
+    "axial_slices": 8
+  },
+  "scope": "Conservative stochastic reference simulator",
+  "field_statistical_consistency_passed": false,
+  "formal_RL_training_authorized": false
+}

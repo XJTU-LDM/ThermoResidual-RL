@@ -1,0 +1,21 @@
+{
+  "candidate": "reference_process",
+  "parameters": {
+    "resistance_MPa_s2_kg2": 0.08,
+    "resistance_log_std": 0.5,
+    "sink_log_std": 0.07,
+    "wall_log_std": 0.02,
+    "fast_tau_s": 20.0,
+    "sink_tau_s": 60.0,
+    "wall_tau_s": 600.0,
+    "innovation_correlation": 0.13416826400293172,
+    "cadence_s": 10.0,
+    "oscillation_period_s": 366.2986971437931,
+    "oscillation_decay_s": 3662.986971437931,
+    "oscillation_weight": 0.95,
+    "sink_phase_lead_rad": 0.3984510809614548,
+    "water_UA_noise": true,
+    "sink_capacity_override_kJ_K": 3000.0
+  },
+  "base_model_sha256": "8abe4202d771fd210e79312f251b68c653cf2f15605f1712473f73f0de5e9041"
+}

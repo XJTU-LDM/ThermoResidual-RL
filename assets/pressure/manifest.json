@@ -1,0 +1,21 @@
+{
+  "architecture": [
+    7,
+    64,
+    64,
+    32,
+    1
+  ],
+  "variant": "no_time",
+  "sample_interval_s": 60,
+  "history_samples": 7,
+  "pressure_unit": "MPa absolute",
+  "ensemble_seeds": [
+    20260920,
+    20260921,
+    20260922,
+    20260923,
+    20260924
+  ],
+  "raw_records_included": false
+}
