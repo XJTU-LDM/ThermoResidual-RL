@@ -6,10 +6,10 @@ import numpy as np
 import pytest
 
 from reproduce import ROOT, load_jobs, verify
-from source_coupled_revision.control import ControlConfig, OBS_DIM, project
-from source_coupled_revision.feasible_actions import compose_actor_flow
-from source_coupled_revision.contracts import Measurement, MeasurementPacket, Observer, reward_components
-from source_coupled_revision.stochastic import ProcessConfig, process_stream
+from thermoresidual.control import ControlConfig, OBS_DIM, project
+from thermoresidual.feasible_actions import compose_actor_flow
+from thermoresidual.contracts import Measurement, MeasurementPacket, Observer, reward_components
+from thermoresidual.stochastic import ProcessConfig, process_stream
 
 
 def test_all_release_checksums():
@@ -79,14 +79,26 @@ def test_initial_learners_are_paired_and_empty():
         assert all(torch.equal(v, states[1][group][k]) for k, v in states[0][group].items())
 
 
-def test_policy_weights_preserved_in_public_export():
-    records = json.loads((ROOT / 'PUBLIC_EXPORT.json').read_text())['checkpoint_exports']
+def test_current_policy_assets():
+    from hashlib import sha256
+    import torch
+    manifest = json.loads((ROOT / 'ASSETS_MANIFEST.json').read_text())
+    assert manifest['raw_field_data_included'] is False
+    records = manifest['policies']
     assert len(records) == 6
-    assert all(r['learned_tensors_equal'] for r in records)
+    assert {(r['controller'], r['weight_ratio']) for r in records} == {
+        (mode, ratio) for mode in ('rrl', 'sac') for ratio in (.5, 1., 2.)}
+    for record in records:
+        assert sha256((ROOT / record['checkpoint']).read_bytes()).hexdigest() == record['checkpoint_sha256']
+        assert record['interactions'] <= 768000
+        initial = torch.load(ROOT / record['initial_learner'], map_location='cpu', weights_only=True)
+        assert initial['updates'] == initial['learner']['replay_count'] == 0
+        for key in ('actor_optimizer', 'critic_optimizer', 'alpha_optimizer'):
+            assert not initial['learner'][key]['state']
 
 
 def test_effective_coefficient_export_excludes_original_measurements():
-    from source_coupled_revision.caofeidian import electrical_reference
+    from thermoresidual.site import electrical_reference
     reference = electrical_reference()
     assert reference['effective_electric_eta_max'] == 0.36913660916421515
     assert reference['branch_conductance'] == 2.547984534683023
@@ -109,8 +121,8 @@ def test_no_private_material_in_release():
 
 
 def test_pressure_ensemble_runs_without_raw_records():
-    from source_coupled_revision.pressure_forecast import Ensemble
-    directory = ROOT / 'experiments/apen17549_source_coupled_revision/pressure/causal_forecast_v1/no_time'
+    from thermoresidual.pressure import Ensemble
+    directory = ROOT / 'assets/pressure'
     model = Ensemble(directory, list(range(20260920, 20260925)))
     mean, std = model.predict(np.full((2, 7), 3.), np.array([360., 420.]))
     assert mean.shape == std.shape == (2,)
@@ -126,11 +138,62 @@ def test_baseline_grids_do_not_modify_common_constraints():
                    for v in settings)
 
 
+def test_final_only_layout_and_current_sensor_protocol():
+    assert not (ROOT / 'experiments').exists()
+    assert not (ROOT / 'results').exists()
+    assert not (ROOT / 'PUBLIC_EXPORT.json').exists()
+    assert (ROOT / 'docs/figures/control_framework.png').is_file()
+    for suite, expected in [('stress', 840), ('sensor', 792), ('weights', 320)]:
+        assert len(load_jobs(suite)) == expected
+    assert all(j.get('pressure_offset', 0.) == 0. for j in load_jobs('sensor'))
+
+
+def test_all_frozen_asset_paths_resolve():
+    for suite in ('demo', 'main', 'stress', 'sensor', 'weights'):
+        for job in load_jobs(suite):
+            plan = job['plan']
+            for key in ('model_root', 'normalization_source', 'resume_learner_checkpoint', 'out'):
+                if plan.get(key):
+                    assert (ROOT / plan[key]).exists(), (suite, key, plan[key])
+            if job.get('checkpoint'):
+                assert (ROOT / job['checkpoint']).is_file()
+            if job.get('pressure_assets'):
+                assert (ROOT / job['pressure_assets']['ensemble_directory']).is_dir()
+
+
+def test_only_absolute_pressure_conversion_is_supported():
+    from thermoresidual.evaluation import PressureFallback
+    PressureFallback(offset=0.)
+    with pytest.raises(ValueError):
+        PressureFallback(offset=.101325)
+
+
+def test_no_private_record_loaders_or_historical_training_entrypoints():
+    from thermoresidual import pressure, site, foundation, simulation
+    from thermoresidual.learning import SAC
+    assert not hasattr(pressure, 'read_data')
+    assert not hasattr(foundation, 'fit_water_exchanger')
+    assert not hasattr(site.SiteScenario(), 'surface_version')
+    assert not hasattr(simulation, 'main')
+    assert not hasattr(SAC, 'warm_start')
+
+
+@pytest.mark.parametrize('ratio,mode', [(r, m) for r in (.5, 2.) for m in ('rrl', 'sac')])
+def test_weight_policy_interface_matches_frozen_protocol(monkeypatch, ratio, mode):
+    monkeypatch.chdir(ROOT)
+    from thermoresidual.simulation import make_episode
+    from thermoresidual.evaluation import controller_for
+    job = next(j for j in load_jobs('weights') if j['mode'] == mode and float(j['ratio']) == ratio)
+    _, interface, cfg, _ = make_episode(job['plan'], 19, 1, 'weight_asset_check')
+    controller = controller_for(job, interface, cfg)
+    assert controller is not None
+
+
 @pytest.mark.slow
 def test_short_physical_balance_and_causal_observation(monkeypatch):
     monkeypatch.chdir(ROOT)
-    from source_coupled_revision.run_stochastic_benchmark import make_episode, targets
-    from source_coupled_revision.control import PhysicsController, evaluate_transition
+    from thermoresidual.simulation import make_episode, targets
+    from thermoresidual.control import PhysicsController, evaluate_transition
     plan = load_jobs('demo')[0]['plan']
     plant, interface, _, _ = make_episode(plan, 99, 8, 'balance_test')
     refs = targets('standard', 0, 8, target_protocol=plan['target_protocol'])

@@ -21,7 +21,7 @@ def main():
     os.chdir(ROOT)
     from reproduce import load_jobs, verify
     verify()
-    from source_coupled_revision.revision_evaluation import evaluate
+    from thermoresidual.evaluation import evaluate
     import pandas as pd
     job = deepcopy(next(j for j in load_jobs('demo') if j['mode'] == 'physics'))
     job.update(steps=args.steps, process_seed=args.seed, evaluation_out=str(output),

@@ -26,10 +26,10 @@ def main():
     from reproduce import load_jobs, verify
     verify()
     import torch
-    from source_coupled_revision.audit import sha256, write_json
-    from source_coupled_revision.run_stochastic_benchmark import make_episode
-    from source_coupled_revision import stochastic_vector_training as training
-    from experiments.apen17549_source_coupled_revision.reviewer_shared_weights_v1.experiment import SharedRecipeSAC
+    from thermoresidual.audit import sha256, write_json
+    from thermoresidual.simulation import make_episode
+    from thermoresidual import training as training
+    from thermoresidual.optimizer import SharedRecipeSAC
     torch.set_num_threads(1)
     if args.device.startswith('cuda') and not torch.cuda.is_available():
         parser.error('CUDA is unavailable; use --device cpu or install a compatible PyTorch build')
@@ -54,12 +54,8 @@ def main():
     _, _, cfg, _ = make_episode(plan, 95000, 2, 'public_training_interface')
     stored = initial['metadata']['nominal_controller']
     current = asdict(cfg)
-    added = set(current) - set(stored)
-    allowed = {'gspid_kp', 'gspid_ti_s', 'gspid_td_s', 'gspid_gain_floor'}
-    if not added <= allowed or any(current[k] != v for k, v in stored.items()):
-        raise ValueError('Initial learner and current neural control interface differ')
-    # Complete only the later-added, neural-inactive GS-PID configuration fields.
-    initial['metadata']['nominal_controller'] = current
+    if stored != current:
+        raise ValueError('Initial learner and current control interface differ')
     initial_path = output / 'initial_learner.pth'
     torch.save(initial, initial_path)
     plan.update(resume_learner_checkpoint=str(initial_path), resume_learner_sha256=sha256(initial_path))

@@ -27,7 +27,7 @@ def load_jobs(suite, root=ROOT):
 
 def execute(job):
     os.chdir(ROOT)
-    from source_coupled_revision.revision_evaluation import evaluate
+    from thermoresidual.evaluation import evaluate
     result = evaluate(job)
     return dict(name=job['name'], mode=job['mode'], profile=job['profile'],
                 condition=job['condition'], process_seed=job['process_seed'],
@@ -52,7 +52,7 @@ def main():
     if args.verify_only:
         return
     if args.suite != 'demo' and args.steps != 256:
-        parser.error('--steps changes only the demo, not archived evaluation suites')
+        parser.error('--steps changes only the demo, not frozen evaluation suites')
     out = args.output.resolve() / (f'demo_{args.steps}' if args.suite == 'demo' else args.suite)
     jobs = []
     for original in load_jobs(args.suite):

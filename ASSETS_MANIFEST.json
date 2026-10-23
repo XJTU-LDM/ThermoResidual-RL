@@ -1,0 +1,54 @@
+{
+  "policies": [
+    {
+      "controller": "rrl",
+      "weight_ratio": 1.0,
+      "checkpoint": "assets/policies/main/rrl/selected.pth",
+      "checkpoint_sha256": "34fed46d46c01374856f9d259efc71003455a7ed349be9a5455888d47943a7be",
+      "initial_learner": "assets/policies/main/rrl/initial_learner.pth",
+      "interactions": 768000
+    },
+    {
+      "controller": "sac",
+      "weight_ratio": 1.0,
+      "checkpoint": "assets/policies/main/sac/selected.pth",
+      "checkpoint_sha256": "4363f8c14b3d6f99b0ed5829b8266d604554033a1e3a6d6d4eaa3f47a056471c",
+      "initial_learner": "assets/policies/main/sac/initial_learner.pth",
+      "interactions": 753664
+    },
+    {
+      "controller": "rrl",
+      "weight_ratio": 0.5,
+      "checkpoint": "assets/policies/weight_0p5/rrl/selected.pth",
+      "checkpoint_sha256": "f2bb826fb4da0d7b9d5083f9efdd11073f7dbd34857bb4f2b8c34b02c10534d5",
+      "initial_learner": "assets/policies/weight_0p5/rrl/initial_learner.pth",
+      "interactions": 768000
+    },
+    {
+      "controller": "sac",
+      "weight_ratio": 0.5,
+      "checkpoint": "assets/policies/weight_0p5/sac/selected.pth",
+      "checkpoint_sha256": "b8bbfe1cf04960c9ab5bd0f9fac4ad8ce927192e430865b564bffbbfa576636f",
+      "initial_learner": "assets/policies/weight_0p5/sac/initial_learner.pth",
+      "interactions": 768000
+    },
+    {
+      "controller": "rrl",
+      "weight_ratio": 2.0,
+      "checkpoint": "assets/policies/weight_2/rrl/selected.pth",
+      "checkpoint_sha256": "bb6b74bd54f6b3dea5541b25e605de03a724925f0430ab3dfd539830998c3cf4",
+      "initial_learner": "assets/policies/weight_2/rrl/initial_learner.pth",
+      "interactions": 768000
+    },
+    {
+      "controller": "sac",
+      "weight_ratio": 2.0,
+      "checkpoint": "assets/policies/weight_2/sac/selected.pth",
+      "checkpoint_sha256": "d4732824366849ff6f593fd789e08e1d311d8b09890af3a5f74ae5b91a2a87da",
+      "initial_learner": "assets/policies/weight_2/sac/initial_learner.pth",
+      "interactions": 768000
+    }
+  ],
+  "raw_field_data_included": false,
+  "policy_tensors_preserved": true
+}

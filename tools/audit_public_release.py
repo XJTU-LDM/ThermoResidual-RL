@@ -26,11 +26,25 @@ def scan(root=ROOT, *, checkpoints=True):
         if not path.is_file():
             continue
         files.append(path)
+        if any(part in ('experiments', 'results') for part in rel.parts):
+            issues.append(dict(file=str(rel), reason='development_archive_directory'))
         if path.is_symlink():
             issues.append(dict(file=str(rel), reason='symlink_not_allowed'))
         if path.suffix.lower() in ('.xlsx', '.xls', '.pdf', '.pem', '.key') or path.name == 'data2.csv' or path.name.startswith('.env'):
             issues.append(dict(file=str(rel), reason='excluded_file_type_or_name'))
+        if path.suffix.lower() == '.csv' and str(rel) not in (
+                'data/synthetic/reference_trace.csv', 'data/synthetic/synthetic_boundary.csv'):
+            issues.append(dict(file=str(rel), reason='unlisted_tabular_data'))
         if path.suffix == '.pth':
+            continue
+        if path.suffix.lower() == '.png':
+            from PIL import Image
+            if str(rel) != 'docs/figures/control_framework.png':
+                issues.append(dict(file=str(rel), reason='unlisted_image'))
+            with Image.open(path) as picture:
+                picture.verify()
+                if any(key not in ('dpi',) for key in picture.info):
+                    issues.append(dict(file=str(rel), reason='unexpected_image_metadata'))
             continue
         try:
             content = path.read_text(encoding='utf-8')

@@ -28,7 +28,7 @@ def probe(job):
     os.chdir(ROOT)
     import numpy as np
     import torch
-    from source_coupled_revision.run_stochastic_benchmark import rollout, score
+    from thermoresidual.simulation import rollout, score
     torch.set_num_threads(1)
     rows = []
     for window in job['plan']['development_windows']:

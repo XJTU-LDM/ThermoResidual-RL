@@ -2,8 +2,8 @@
   {
     "mode": "rrl",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -184,16 +184,16 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true,
-      "out": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl",
-      "resume_learner_checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl/initial_learner.pth",
-      "resume_learner_sha256": "96b3c652f435b223809a27f179eef5cdcf37441674598ec0368598c8bde9af11"
+      "out": "assets/policies/main/rrl",
+      "resume_learner_checkpoint": "assets/policies/main/rrl/initial_learner.pth",
+      "resume_learner_sha256": "1d6900a9f0ce8584ad1f901ec0bc815d14da9b367616765b3de299340c670b7a"
     },
-    "checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/rrl/training/rrl_20260930/selected.pth",
-    "checkpoint_sha256": "404d659168acf325d9c6456d4a249a4bae8340e6539ff8b3dc857c8aa65d6240",
+    "checkpoint": "assets/policies/main/rrl/selected.pth",
+    "checkpoint_sha256": "34fed46d46c01374856f9d259efc71003455a7ed349be9a5455888d47943a7be",
     "steps": 256,
     "process_seed": 2026092301,
     "profile": "standard",
@@ -203,8 +203,8 @@
   {
     "mode": "sac",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -385,16 +385,16 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true,
-      "out": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac",
-      "resume_learner_checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac/initial_learner.pth",
-      "resume_learner_sha256": "21bfdecd988db5a7b024214ae36cb5d8bcaad4a3d628c84a2931719617203331"
+      "out": "assets/policies/main/sac",
+      "resume_learner_checkpoint": "assets/policies/main/sac/initial_learner.pth",
+      "resume_learner_sha256": "cc32bedb82e4474db33df1ec291facefb7bbacdde2dba6c9a7d087503d4ed95c"
     },
-    "checkpoint": "experiments/apen17549_source_coupled_revision/full_action_parity_768k_v1/sac/training/sac_20260930/selected.pth",
-    "checkpoint_sha256": "aebd65a2a251d5a163cc6747dc955f62686a6a1066fc7df38f0f4cf3d5f83c24",
+    "checkpoint": "assets/policies/main/sac/selected.pth",
+    "checkpoint_sha256": "4363f8c14b3d6f99b0ed5829b8266d604554033a1e3a6d6d4eaa3f47a056471c",
     "steps": 256,
     "process_seed": 2026092301,
     "profile": "standard",
@@ -404,8 +404,8 @@
   {
     "mode": "pi",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -586,7 +586,7 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true
@@ -605,8 +605,8 @@
   {
     "mode": "mpc",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -787,7 +787,7 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true
@@ -805,8 +805,8 @@
   {
     "mode": "physics",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -987,7 +987,7 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true
@@ -1001,8 +1001,8 @@
   {
     "mode": "gspid",
     "plan": {
-      "model_root": "experiments/apen17549_source_coupled_revision/stochastic_model_final",
-      "model_hash": "66e00332f825ab978d0f17035ff8987fed8cec3bd7412e6d5a3fd1948b156300",
+      "model_root": "assets/model",
+      "model_hash": "918b4db0aaa91e7f8c63971cd039ba0c9fc11f5303dbfbed8927b32d8e9a0b94",
       "target_protocol": {
         "low_amplitude": [
           [
@@ -1183,7 +1183,7 @@
       ],
       "objective": "1*(e_W/10)^2+(e_Q/10)^2+0.002*||delta_m||^2",
       "initialization": "Fresh paired weights, empty replay and optimizers; no learned checkpoint inheritance",
-      "normalization_source": "experiments/apen17549_source_coupled_revision/reviewer_shared_weights_v1/normalization.pth",
+      "normalization_source": "assets/normalization.pth",
       "normalization_sha256": "5a01454f5910b0a7a5ed0846994425cadd5ddbcf753d365e123652a270dc6c80",
       "total_interactions": 768000,
       "require_full_action_parity": true

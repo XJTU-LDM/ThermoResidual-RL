@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+outputs/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+data2.csv
+*.xlsx
+*.xls
+private_data/
+.DS_Store

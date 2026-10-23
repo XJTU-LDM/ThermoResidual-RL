@@ -12,7 +12,7 @@ and checkpoint selection separate. Report failed evaluations as well as successe
 
 For intentional source/configuration changes, `reproduce.py` checksum validation
 will fail until the release manifest is regenerated. Do this only for a new
-clearly identified release, not to conceal changes to archived evidence.
+clearly identified release, preserving the provenance of published results.
 Do not commit generated `outputs/`, caches or private datasets.
 
 Contributions must be your own work or compatible with this repository's MIT
